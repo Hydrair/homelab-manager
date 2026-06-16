@@ -14,6 +14,7 @@
 - ipAddress
 - description
 - userId
+- user
 
 ## Service
 
