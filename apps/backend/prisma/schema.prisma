@@ -12,15 +12,25 @@ datasource db {
   provider = "mysql"
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
 model User { 
   id    Int     @id @default(autoincrement()) 
+
   email String  @unique
   passwordHash  String
+
+  role  Role @default(USER)
+
   servers Server[]
 } 
 
 model Server {
   id    Int     @id @default(autoincrement()) 
+
   name  String  @unique
   ipAddress String
   description String
@@ -33,6 +43,7 @@ model Server {
 
 model Service {
   id    Int     @id @default(autoincrement()) 
+  
   name  String  @unique
   url String
   port Int

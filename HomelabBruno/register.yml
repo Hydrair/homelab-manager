@@ -1,0 +1,22 @@
+info:
+  name: register
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://localhost:3000/users
+  body:
+    type: json
+    data: |-
+      {
+        "email": "max@test.de",
+        "passwordHash": "123"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
