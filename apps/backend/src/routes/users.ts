@@ -4,10 +4,9 @@ import { FastifyInstance } from "fastify";
 import { prisma, UserType } from "../lib/prisma";
 import { requireRole } from "../lib/util";
 import { authenticate } from "../plugins/auth";
+import { RequestParams } from "../lib/types";
 
-type DeleteUserParams = {
-  id: string;
-};
+
 
 export async function userRoutes(app: FastifyInstance) {
   app.get("/users", async () => {
@@ -21,7 +20,7 @@ export async function userRoutes(app: FastifyInstance) {
   });
 
   app.delete<{
-    Params: DeleteUserParams;
+    Params: RequestParams;
   }>(
     "/users/:id",
     {

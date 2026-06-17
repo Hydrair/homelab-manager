@@ -1,6 +1,5 @@
-import { describe, it, expect, beforeEach } from "vitest";
-import { createTestApp } from "./utils/server";
-import { resetDb } from "./utils/resetDB";
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { createTestApp, resetDb } from "./utils";
 import { FastifyInstance } from "fastify";
 import { Role } from "../generated/prisma/enums";
 
@@ -12,6 +11,10 @@ describe("Auth - register", () => {
 
     app = createTestApp();
     await app.ready();
+  });
+
+  afterEach(async () => {
+    await app.close()
   });
 
   it("creates a new user", async () => {

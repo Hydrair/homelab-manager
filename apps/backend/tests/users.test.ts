@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { createTestApp } from "./utils/server";
-import { resetDb } from "./utils/resetDB";
+import { resetDb, createTestApp } from "./utils";
 import { FastifyInstance } from "fastify";
 
 let app: FastifyInstance
