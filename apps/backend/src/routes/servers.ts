@@ -3,7 +3,6 @@
 import { FastifyInstance } from "fastify";
 import { prisma, ServerType } from "../lib/prisma";
 import { RequestParams, UpdateServerBody } from "../lib/types";
-import { authenticate } from "../plugins/auth";
 
 export async function serverRoutes(app: FastifyInstance) {
   app.get("/servers", async () => {

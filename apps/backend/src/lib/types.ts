@@ -12,3 +12,9 @@ export type UpdateServerBody = {
   ipAddress?: string,
   description?: string
 }
+
+export type UpdateServiceBody = {
+  name?: string,
+  url?: string,
+  port?: number
+}

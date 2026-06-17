@@ -36,7 +36,6 @@ export async function createServer() {
 }
 
 export async function createService() {
-  const user = await createUser()
   const server = await createServer()
 
   return prisma.service.create({
