@@ -1,6 +1,7 @@
 export default {
   test: {
     environment: 'node',
-    setupFiles: ['./tests/setup.ts']
+    setupFiles: ['./tests/setup.ts'],
+    fileParallelism: false
   }
 };
