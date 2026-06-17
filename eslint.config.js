@@ -5,12 +5,5 @@ import prettier from 'eslint-config-prettier';
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
-  prettier,
-  {
-    rules: {
-      'no-unused-vars': 'warn',
-      '@typescript-eslint/no-unused-vars': 'warn',
-      'prefer-const': 'error'
-    }
-  }
+  prettier
 ];

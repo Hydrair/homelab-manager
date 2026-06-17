@@ -39,7 +39,7 @@ export async function serviceRoutes(app: FastifyInstance) {
       return service;
     } catch (error) {
       reply.status(404);
-      throw new Error(`There is no service with id ${id}.`);
+      throw new Error(`There is no service with id ${id}.`, { cause: error });
     }
   });
 
@@ -52,7 +52,7 @@ export async function serviceRoutes(app: FastifyInstance) {
       return response;
     } catch (error) {
       reply.status(404);
-      throw new Error(`There is no service with id ${id}.`);
+      throw new Error(`There is no service with id ${id}.`, { cause: error });
     }
   });
 }

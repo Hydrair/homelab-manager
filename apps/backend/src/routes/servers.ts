@@ -39,7 +39,7 @@ export async function serverRoutes(app: FastifyInstance) {
       return server;
     } catch (error) {
       reply.status(404);
-      throw new Error(`There is no server with id ${id}.`);
+      throw new Error(`There is no server with id ${id}.`, { cause: error });
     }
   });
 
@@ -52,7 +52,7 @@ export async function serverRoutes(app: FastifyInstance) {
       return response;
     } catch (error) {
       reply.status(404);
-      throw new Error(`There is no server with id ${id}.`);
+      throw new Error(`There is no server with id ${id}.`, { cause: error });
     }
   });
 }

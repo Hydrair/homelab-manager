@@ -3,6 +3,7 @@ import { prisma, UserType } from '../lib/prisma';
 import { requireRole } from '../lib/util';
 import { authenticate } from '../plugins/auth';
 import { RequestParams } from '../lib/types';
+import { Role } from '../../generated/prisma/enums';
 
 export async function userRoutes(app: FastifyInstance) {
   app.get('/users', async () => {
@@ -20,16 +21,12 @@ export async function userRoutes(app: FastifyInstance) {
   }>(
     '/users/:id',
     {
-      preHandler: [authenticate, requireRole('ADMIN')]
+      preHandler: [authenticate, requireRole(Role.ADMIN)]
     },
     async (request) => {
       const id = Number(request.params.id);
-      try {
-        const response = await prisma.user.delete({ where: { id } });
-        return response;
-      } catch (error) {
-        throw error;
-      }
+
+      return await prisma.user.delete({ where: { id } });
     }
   );
 }
