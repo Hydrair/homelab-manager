@@ -1,11 +1,11 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { createTestApp, resetDb } from "./utils";
-import { FastifyInstance } from "fastify";
-import { Role } from "../generated/prisma/enums";
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { createTestApp, resetDb } from './utils';
+import { FastifyInstance } from 'fastify';
+import { Role } from '../generated/prisma/enums';
 
-let app: FastifyInstance
+let app: FastifyInstance;
 
-describe("Auth - register", () => {
+describe('Auth - register', () => {
   beforeEach(async () => {
     await resetDb();
 
@@ -14,61 +14,61 @@ describe("Auth - register", () => {
   });
 
   afterEach(async () => {
-    await app.close()
+    await app.close();
   });
 
-  it("creates a new user", async () => {
+  it('creates a new user', async () => {
     const res = await app.inject({
-      method: "POST",
-      url: "/auth/register",
+      method: 'POST',
+      url: '/auth/register',
       body: {
-        email: "test@test.de",
-        password: "secret123",
-      },
+        email: 'test@test.de',
+        password: 'secret123'
+      }
     });
 
     expect(res.statusCode).toBe(200);
   });
 
-  it("rejects duplicate email", async () => {
+  it('rejects duplicate email', async () => {
     await app.inject({
-      method: "POST",
-      url: "/auth/register",
+      method: 'POST',
+      url: '/auth/register',
       payload: {
-        email: "dup@test.de",
-        password: "secret",
-      },
+        email: 'dup@test.de',
+        password: 'secret'
+      }
     });
 
     const res = await app.inject({
-      method: "POST",
-      url: "/auth/register",
+      method: 'POST',
+      url: '/auth/register',
       payload: {
-        email: "dup@test.de",
-        password: "secret",
-      },
+        email: 'dup@test.de',
+        password: 'secret'
+      }
     });
 
     expect(res.statusCode).toBe(500);
   });
 
-  it("logs user in and returns token", async () => {
+  it('logs user in and returns token', async () => {
     await app.inject({
-      method: "POST",
-      url: "/auth/register",
+      method: 'POST',
+      url: '/auth/register',
       payload: {
-        email: "login@test.de",
-        password: "secret",
-      },
+        email: 'login@test.de',
+        password: 'secret'
+      }
     });
 
     const res = await app.inject({
-      method: "POST",
-      url: "/auth/login",
+      method: 'POST',
+      url: '/auth/login',
       payload: {
-        email: "login@test.de",
-        password: "secret",
-      },
+        email: 'login@test.de',
+        password: 'secret'
+      }
     });
 
     expect(res.statusCode).toBe(200);
@@ -78,119 +78,115 @@ describe("Auth - register", () => {
     expect(body.token).toBeDefined();
   });
 
-  it("rejects wrong password", async () => {
+  it('rejects wrong password', async () => {
     await app.inject({
-      method: "POST",
-      url: "/auth/register",
+      method: 'POST',
+      url: '/auth/register',
       payload: {
-        email: "wrong@test.de",
-        password: "secret",
-      },
+        email: 'wrong@test.de',
+        password: 'secret'
+      }
     });
 
     const res = await app.inject({
-      method: "POST",
-      url: "/auth/login",
+      method: 'POST',
+      url: '/auth/login',
       payload: {
-        email: "wrong@test.de",
-        password: "wrongpass",
-      },
+        email: 'wrong@test.de',
+        password: 'wrongpass'
+      }
     });
 
     expect(res.statusCode).toBe(401);
   });
 
-  it("blocks access to /me without token", async () => {
+  it('blocks access to /me without token', async () => {
     const res = await app.inject({
-      method: "GET",
-      url: "/me",
+      method: 'GET',
+      url: '/me'
     });
 
     expect(res.statusCode).toBe(401);
   });
 
-  it("allows access to /me with token", async () => {
+  it('allows access to /me with token', async () => {
     await app.inject({
-      method: "POST",
-      url: "/auth/register",
+      method: 'POST',
+      url: '/auth/register',
       payload: {
-        email: "me@test.de",
-        password: "secret",
-      },
+        email: 'me@test.de',
+        password: 'secret'
+      }
     });
 
     const login = await app.inject({
-      method: "POST",
-      url: "/auth/login",
+      method: 'POST',
+      url: '/auth/login',
       payload: {
-        email: "me@test.de",
-        password: "secret",
-      },
+        email: 'me@test.de',
+        password: 'secret'
+      }
     });
 
     const { token } = JSON.parse(login.body);
 
     const res = await app.inject({
-      method: "GET",
-      url: "/me",
+      method: 'GET',
+      url: '/me',
       headers: {
-        authorization: `Bearer ${token}`,
-      },
+        authorization: `Bearer ${token}`
+      }
     });
 
     expect(res.statusCode).toBe(200);
   });
 
-  it("should delete user when admin", async () => {
+  it('should delete user when admin', async () => {
     const register = await app.inject({
-      method: "POST",
-      url: "/auth/register",
+      method: 'POST',
+      url: '/auth/register',
       payload: {
-        email: "me@test.de",
-        password: "secret",
+        email: 'me@test.de',
+        password: 'secret',
         role: Role.ADMIN
-      },
+      }
     });
 
-    const user = JSON.parse(register.body)
+    const user = JSON.parse(register.body);
 
     const resWithoutLogin = await app.inject({
-      method: "DELETE",
-      url: `/users/${user.id}`,
+      method: 'DELETE',
+      url: `/users/${user.id}`
     });
 
-    expect(resWithoutLogin.statusCode).toBe(401)
+    expect(resWithoutLogin.statusCode).toBe(401);
 
     const login = await app.inject({
-      method: "POST",
-      url: "/auth/login",
+      method: 'POST',
+      url: '/auth/login',
       payload: {
-        email: "me@test.de",
-        password: "secret",
-      },
+        email: 'me@test.de',
+        password: 'secret'
+      }
     });
 
     const { token } = JSON.parse(login.body);
 
     const res = await app.inject({
-      method: "DELETE",
+      method: 'DELETE',
       url: `/users/${user.id}`,
       headers: {
-        authorization: `Bearer ${token}`,
-      },
+        authorization: `Bearer ${token}`
+      }
     });
     expect(res.statusCode).toBe(200);
 
     const users = await app.inject({
-      method: "GET",
-      url: "/users",
+      method: 'GET',
+      url: '/users'
     });
 
     expect(users.statusCode).toBe(200);
     expect(JSON.parse(users.body)).toEqual([]);
   });
 });
-
-
-
-

@@ -1,10 +1,10 @@
-import { describe, it, expect, beforeEach } from "vitest";
-import { resetDb, createTestApp } from "./utils";
-import { FastifyInstance } from "fastify";
+import { describe, it, expect, beforeEach } from 'vitest';
+import { resetDb, createTestApp } from './utils';
+import { FastifyInstance } from 'fastify';
 
-let app: FastifyInstance
+let app: FastifyInstance;
 
-describe("User API", () => {
+describe('User API', () => {
   beforeEach(async () => {
     await resetDb();
 
@@ -12,15 +12,13 @@ describe("User API", () => {
     await app.ready();
   });
 
-  it("should return empty users list", async () => {
+  it('should return empty users list', async () => {
     const res = await app.inject({
-      method: "GET",
-      url: "/users",
+      method: 'GET',
+      url: '/users'
     });
 
     expect(res.statusCode).toBe(200);
     expect(JSON.parse(res.body)).toEqual([]);
   });
-
-
 });

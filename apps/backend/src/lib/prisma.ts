@@ -1,6 +1,11 @@
-import "dotenv/config";
-import { PrismaMariaDb } from "@prisma/adapter-mariadb";
-import { PrismaClient, type User as UserType, type Server as ServerType, type Service as ServiceType } from "../../generated/prisma/client";
+import 'dotenv/config';
+import { PrismaMariaDb } from '@prisma/adapter-mariadb';
+import {
+  PrismaClient,
+  type User as UserType,
+  type Server as ServerType,
+  type Service as ServiceType
+} from '../../generated/prisma/client';
 
 const adapter = new PrismaMariaDb({
   host: process.env.DATABASE_HOST,
@@ -8,7 +13,7 @@ const adapter = new PrismaMariaDb({
   port: Number(process.env.DATABASE_PORT),
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
-  connectionLimit: 5,
+  connectionLimit: 5
 });
 
 const prisma = new PrismaClient({ adapter });

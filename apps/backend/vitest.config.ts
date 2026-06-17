@@ -1,6 +1,6 @@
 export default {
   test: {
-    environment: "node",
-    setupFiles: ["./tests/setup.ts"],
-  },
+    environment: 'node',
+    setupFiles: ['./tests/setup.ts']
+  }
 };

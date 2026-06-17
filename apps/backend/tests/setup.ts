@@ -1,7 +1,7 @@
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 
 dotenv.config({
-  path: ".env.test",
+  path: '.env.test'
 });
 
-console.log("DATABASE_URL", process.env.DATABASE_URL);
+console.log('DATABASE_URL', process.env.DATABASE_URL);

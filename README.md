@@ -6,15 +6,15 @@ Dieses Projekt dient als Lern- und Portfolio-Projekt, um den Übergang von Front
 
 Der Fokus liegt auf:
 
-* Backend-Entwicklung mit Node.js
-* API-Design
-* Authentifizierung & Autorisierung
-* Datenmodellierung
-* MySQL
-* Docker
-* Monitoring
-* CI/CD
-* Betrieb einer produktionsnahen Anwendung
+- Backend-Entwicklung mit Node.js
+- API-Design
+- Authentifizierung & Autorisierung
+- Datenmodellierung
+- MySQL
+- Docker
+- Monitoring
+- CI/CD
+- Betrieb einer produktionsnahen Anwendung
 
 Das Projekt soll bewusst typische Anforderungen moderner Fullstack-Stellen abdecken.
 
@@ -26,10 +26,10 @@ Home Lab Manager ist eine Anwendung zur Verwaltung von Servern und Services im e
 
 Ein Nutzer kann:
 
-* Server verwalten
-* Services verwalten
-* Statusinformationen einsehen
-* Verfügbarkeiten überwachen
+- Server verwalten
+- Services verwalten
+- Statusinformationen einsehen
+- Verfügbarkeiten überwachen
 
 Der Fokus liegt nicht auf Infrastruktur-Automatisierung, sondern auf einer sauberen Fullstack-Architektur.
 
@@ -39,48 +39,48 @@ Der Fokus liegt nicht auf Infrastruktur-Automatisierung, sondern auf einer saube
 
 ## Frontend
 
-* React
-* TypeScript
-* Vite
-* React Router
-* TanStack Query
+- React
+- TypeScript
+- Vite
+- React Router
+- TanStack Query
 
 ## Backend
 
-* Node.js
-* TypeScript
-* Fastify
+- Node.js
+- TypeScript
+- Fastify
 
 ## Datenbank
 
-* MySQL
-* Prisma ORM
+- MySQL
+- Prisma ORM
 
 ## Infrastruktur
 
-* Docker
-* Docker Compose
+- Docker
+- Docker Compose
 
 ## Monitoring
 
-* Prometheus
-* Grafana
+- Prometheus
+- Grafana
 
 ## Qualität
 
-* ESLint
-* Prettier
-* Husky
-* lint-staged
+- ESLint
+- Prettier
+- Husky
+- lint-staged
 
 ## Testing
 
-* Vitest
-* Playwright
+- Vitest
+- Playwright
 
 ## CI/CD
 
-* GitHub Actions
+- GitHub Actions
 
 ---
 
@@ -90,11 +90,11 @@ Ziel des Projekts ist das Erlernen und Demonstrieren von Fullstack-Kompetenzen.
 
 Da bereits Erfahrung mit React vorhanden ist, soll der Fokus auf folgenden Bereichen liegen:
 
-* API-Design
-* Backend-Architektur
-* Authentifizierung
-* Datenmodellierung
-* Betrieb von Services
+- API-Design
+- Backend-Architektur
+- Authentifizierung
+- Datenmodellierung
+- Betrieb von Services
 
 Daher wird ein separates Frontend- und Backend-System verwendet.
 
@@ -108,18 +108,18 @@ React → Fastify API → Prisma → MySQL
 
 Prisma wird verwendet für:
 
-* Typsichere Datenbankzugriffe
-* Datenbank-Migrationen
-* TypeScript-Integration
-* Schnelle Entwicklung
+- Typsichere Datenbankzugriffe
+- Datenbank-Migrationen
+- TypeScript-Integration
+- Schnelle Entwicklung
 
 Trotz Prisma sollen weiterhin folgende Datenbankthemen aktiv gelernt werden:
 
-* Relationen
-* Foreign Keys
-* Indizes
-* Datenmodellierung
-* Query-Optimierung
+- Relationen
+- Foreign Keys
+- Indizes
+- Datenmodellierung
+- Query-Optimierung
 
 ---
 
@@ -129,26 +129,26 @@ Trotz Prisma sollen weiterhin folgende Datenbankthemen aktiv gelernt werden:
 
 ### User
 
-* id
-* email
-* passwordHash
-* role
+- id
+- email
+- passwordHash
+- role
 
 ### Server
 
-* id
-* name
-* ipAddress
-* description
-* userId
+- id
+- name
+- ipAddress
+- description
+- userId
 
 ### Service
 
-* id
-* name
-* url
-* port
-* serverId
+- id
+- name
+- url
+- port
+- serverId
 
 ## Beziehungen
 
@@ -164,16 +164,16 @@ Die Authentifizierung wird selbst implementiert.
 
 Ziele:
 
-* Registrierung
-* Login
-* JWT Authentication
-* Rollenmodell
-* Geschützte API-Routen
+- Registrierung
+- Login
+- JWT Authentication
+- Rollenmodell
+- Geschützte API-Routen
 
 Geplante Rollen:
 
-* USER
-* ADMIN
+- USER
+- ADMIN
 
 ---
 
@@ -248,13 +248,13 @@ Grundlegende Infrastruktur schaffen.
 
 ### Aufgaben
 
-* Fastify Setup
-* Prisma Setup
-* MySQL Setup
-* Docker Compose
-* User Modell
-* Server Modell
-* Service Modell
+- Fastify Setup
+- Prisma Setup
+- MySQL Setup
+- Docker Compose
+- User Modell
+- Server Modell
+- Service Modell
 
 Erfolgskriterium:
 
@@ -266,12 +266,12 @@ API kann Daten speichern und abrufen.
 
 ### Aufgaben
 
-* Registrierung
-* Login
-* Passwort Hashing
-* JWT
-* Rollenmodell
-* Protected Routes
+- Registrierung
+- Login
+- Passwort Hashing
+- JWT
+- Rollenmodell
+- Protected Routes
 
 Erfolgskriterium:
 
@@ -283,10 +283,10 @@ Authentifizierter Zugriff auf API-Endpunkte.
 
 ### Aufgaben
 
-* Server anlegen
-* Server bearbeiten
-* Server löschen
-* Server anzeigen
+- Server anlegen
+- Server bearbeiten
+- Server löschen
+- Server anzeigen
 
 Erfolgskriterium:
 
@@ -298,10 +298,10 @@ Vollständiges CRUD für Server.
 
 ### Aufgaben
 
-* Services anlegen
-* Services bearbeiten
-* Services löschen
-* Services anzeigen
+- Services anlegen
+- Services bearbeiten
+- Services löschen
+- Services anzeigen
 
 Erfolgskriterium:
 
@@ -313,16 +313,16 @@ Vollständiges CRUD für Services.
 
 ### Aufgaben
 
-* Health Checks
-* Erreichbarkeit prüfen
-* Status speichern
-* Historisierung
+- Health Checks
+- Erreichbarkeit prüfen
+- Status speichern
+- Historisierung
 
 Beispiele:
 
-* Online
-* Offline
-* Letzte erfolgreiche Prüfung
+- Online
+- Offline
+- Letzte erfolgreiche Prüfung
 
 Erfolgskriterium:
 
@@ -334,10 +334,10 @@ System erkennt Server- und Service-Ausfälle.
 
 ### Aufgaben
 
-* Login
-* Dashboard
-* Serververwaltung
-* Serviceverwaltung
+- Login
+- Dashboard
+- Serververwaltung
+- Serviceverwaltung
 
 Erfolgskriterium:
 
@@ -349,11 +349,11 @@ Alle Funktionen über React nutzbar.
 
 ### Aufgaben
 
-* Grafana
-* Prometheus
-* API Metrics
-* Fehlerquoten
-* Antwortzeiten
+- Grafana
+- Prometheus
+- API Metrics
+- Fehlerquoten
+- Antwortzeiten
 
 Erfolgskriterium:
 
@@ -365,16 +365,16 @@ Metriken sichtbar und auswertbar.
 
 ### Backend
 
-* Unit Tests
-* API Tests
+- Unit Tests
+- API Tests
 
 ### Frontend
 
-* Component Tests
+- Component Tests
 
 ### E2E
 
-* Playwright
+- Playwright
 
 Erfolgskriterium:
 
@@ -386,10 +386,10 @@ Kernfunktionen automatisch getestet.
 
 ### Aufgaben
 
-* GitHub Actions
-* Linting
-* Tests
-* Docker Build
+- GitHub Actions
+- Linting
+- Tests
+- Docker Build
 
 Erfolgskriterium:
 
@@ -401,10 +401,10 @@ Automatisierte Pipeline vorhanden.
 
 ### Aufgaben
 
-* Deployment
-* HTTPS
-* Domain
-* Monitoring produktiv
+- Deployment
+- HTTPS
+- Domain
+- Monitoring produktiv
 
 Erfolgskriterium:
 
@@ -418,28 +418,28 @@ Nicht Bestandteil des MVP.
 
 ## Infrastruktur
 
-* SSH Integration
-* Docker Integration
-* Kubernetes Integration
-* Terraform Integration
+- SSH Integration
+- Docker Integration
+- Kubernetes Integration
+- Terraform Integration
 
 ## Sicherheit
 
-* Rate Limiting
-* Audit Log
-* Passwort Reset
-* E-Mail Verifizierung
+- Rate Limiting
+- Audit Log
+- Passwort Reset
+- E-Mail Verifizierung
 
 ## Performance
 
-* Redis Caching
+- Redis Caching
 
 ## Produktfunktionen
 
-* Service Tags
-* Benachrichtigungen
-* Wartungsfenster
-* Verfügbarkeitsstatistiken
+- Service Tags
+- Benachrichtigungen
+- Wartungsfenster
+- Verfügbarkeitsstatistiken
 
 ---
 
@@ -447,14 +447,14 @@ Nicht Bestandteil des MVP.
 
 Nach Abschluss des Projekts sollen folgende Fähigkeiten praktisch nachgewiesen werden können:
 
-* Fullstack-Entwicklung
-* API-Design
-* Datenmodellierung
-* Authentifizierung
-* Docker
-* Monitoring
-* CI/CD
-* Deployment
-* Betrieb einer Webanwendung
+- Fullstack-Entwicklung
+- API-Design
+- Datenmodellierung
+- Authentifizierung
+- Docker
+- Monitoring
+- CI/CD
+- Deployment
+- Betrieb einer Webanwendung
 
 Das Projekt soll als Referenzprojekt für Fullstack-Developer-Stellen dienen.
