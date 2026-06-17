@@ -17,6 +17,12 @@ enum Role {
   ADMIN
 }
 
+enum Status {
+  ONLINE
+  OFFLINE
+  UNKNOWN
+}
+
 model User { 
   id    Int     @id @default(autoincrement()) 
 
@@ -37,6 +43,11 @@ model Server {
 
   userId  Int
   user    User  @relation(fields: [userId], references: [id])
+
+  checks ServerCheck[]
+  status      Status   @default(UNKNOWN) 
+  lastCheckAt DateTime?
+  createdAt   DateTime @default(now())
   
   services Service[]
 }
@@ -50,4 +61,14 @@ model Service {
 
   serverId  Int
   server    Server @relation(fields: [serverId], references: [id])
+}
+
+model ServerCheck {
+  id        Int      @id @default(autoincrement())
+  serverId  Int
+  status    Status @default(UNKNOWN)
+  responseMs Int?
+  createdAt DateTime @default(now())
+
+  server Server @relation(fields: [serverId], references: [id])
 }

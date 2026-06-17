@@ -4,6 +4,7 @@ import { serverRoutes } from './routes/servers';
 import { serviceRoutes } from './routes/services';
 import { authRoutes } from './routes/auth';
 import JWT from '@fastify/jwt';
+import { monitoringRoutes } from './routes/monitoring';
 
 const env = {
   JWT_SECRET:
@@ -26,6 +27,7 @@ export function buildApp(enableLogs: boolean = true) {
   app.register(serverRoutes);
   app.register(serviceRoutes);
   app.register(authRoutes);
+  app.register(monitoringRoutes);
 
   app.decorate('authenticate', async (request: FastifyRequest) => {
     await request.jwtVerify();

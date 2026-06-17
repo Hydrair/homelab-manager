@@ -2,6 +2,7 @@ import { prisma } from '../src/lib/prisma';
 import { buildApp } from '../src/app';
 
 export async function resetDb() {
+  await prisma.serverCheck.deleteMany();
   await prisma.service.deleteMany();
   await prisma.server.deleteMany();
   await prisma.user.deleteMany();
@@ -14,7 +15,7 @@ export function createTestApp() {
 export async function createUser() {
   return prisma.user.create({
     data: {
-      email: 'user@test.de',
+      email: `user${crypto.randomUUID()}@test.de`,
       passwordHash: 'hash'
     }
   });
@@ -25,7 +26,7 @@ export async function createServer() {
 
   return prisma.server.create({
     data: {
-      name: 'Homelab',
+      name: `Homelab-${crypto.randomUUID()}`,
       ipAddress: '123.123.345.345',
       description: 'This is my homelab.',
       userId: user.id

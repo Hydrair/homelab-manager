@@ -20,6 +20,7 @@
     "dev": "tsx watch src/index.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:watch": "vitest --watch"
+    "test:watch": "vitest --watch",
+    "db:generate": "npx prisma generate"
   }
 }
