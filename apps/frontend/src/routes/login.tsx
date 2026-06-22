@@ -4,8 +4,13 @@ import { MailField } from '../components/forms/MailField';
 import { PasswordField } from '../components/forms/PasswordField';
 import { SignInButton } from '../components/forms/SignInButton';
 import { Highlighted } from '../components/layout/Highlighted';
+import { createFileRoute } from '@tanstack/react-router';
 
-export function LoginPage() {
+export const Route = createFileRoute('/login')({
+  component: LoginPage
+});
+
+function LoginPage() {
   const [mail, setMail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 

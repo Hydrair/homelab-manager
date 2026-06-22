@@ -1,4 +1,5 @@
 {
+  "name": "homelab-backend",
   "type": "module",
   "devDependencies": {
     "@types/node": "^25.9.3",
