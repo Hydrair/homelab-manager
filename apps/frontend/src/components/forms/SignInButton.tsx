@@ -1,11 +1,11 @@
 type SignInButtonProps = {
-  onClick: () => {};
+  onClick: (e: React.FormEvent) => void;
 };
 
-export function SignInButton(props: SignInButtonProps) {
+export function SignInButton({ onClick }: SignInButtonProps) {
   return (
     <>
-      <button onClick={props.onClick}>Sign in</button>
+      <button onClick={(e) => onClick(e)}>Sign in</button>
     </>
   );
 }

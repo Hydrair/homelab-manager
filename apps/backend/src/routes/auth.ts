@@ -41,12 +41,12 @@ export async function authRoutes(app: FastifyInstance) {
   });
 
   app.get(
-    '/me',
+    '/auth/validate-token',
     {
       preHandler: [authenticate]
     },
     async (request) => {
-      return request.user;
+      return { valid: true, user: request.user };
     }
   );
 }

@@ -4,6 +4,7 @@ import { serverRoutes } from './routes/servers';
 import { serviceRoutes } from './routes/services';
 import { authRoutes } from './routes/auth';
 import JWT from '@fastify/jwt';
+import cors from '@fastify/cors';
 import { monitoringRoutes } from './routes/monitoring';
 
 const env = {
@@ -28,6 +29,11 @@ export function buildApp(enableLogs: boolean = true) {
   app.register(serviceRoutes);
   app.register(authRoutes);
   app.register(monitoringRoutes);
+
+  app.register(cors, {
+    origin: 'http://localhost:5173',
+    credentials: true
+  });
 
   app.decorate('authenticate', async (request: FastifyRequest) => {
     await request.jwtVerify();

@@ -1,12 +1,16 @@
 type MailFieldProps = {
-  onChange: () => {};
+  onChange: (value: string) => void;
 };
 
-export function MailField(props: MailFieldProps) {
+export function MailField({ onChange }: MailFieldProps) {
   return (
     <>
       <label htmlFor="mail-field">Mail</label>
-      <input id="mail-field" type="email" onChange={props.onChange} />
+      <input
+        id="mail-field"
+        type="email"
+        onChange={(e) => onChange(e.target.value)}
+      />
     </>
   );
 }

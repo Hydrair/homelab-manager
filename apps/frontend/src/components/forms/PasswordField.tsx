@@ -1,12 +1,16 @@
 type PasswordFieldProps = {
-  onChange: () => {};
+  onChange: (value: string) => void;
 };
 
-export function PasswordField(props: PasswordFieldProps) {
+export function PasswordField({ onChange }: PasswordFieldProps) {
   return (
     <>
       <label htmlFor="password-field">Password</label>
-      <input id="password-field" type="password" onChange={props.onChange} />
+      <input
+        id="password-field"
+        type="password"
+        onChange={(e) => onChange(e.target.value)}
+      />
     </>
   );
 }
